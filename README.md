@@ -18,11 +18,17 @@ psql -U blog
 // 查看表
 \l
 
-// 删除数据库存
+// 删除数据库
 drop database  blog_development;
 
 // 创建数据库
 CREATE DATABASE blog_development ENCODING 'UTF8' LC_COLLATE 'en_US.utf8' LC_CTYPE 'en_US.utf8';
+
+// 连接数据库
+\c  blog_development;
+
+// 查看数据库表
+\dt
 
 // 创建表
 typeorm migration:create
