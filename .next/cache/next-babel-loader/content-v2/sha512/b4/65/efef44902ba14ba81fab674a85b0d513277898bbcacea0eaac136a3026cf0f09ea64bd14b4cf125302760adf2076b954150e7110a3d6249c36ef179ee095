@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { getPosts } from \"lib/posts\";\n\nconst Posts = async (req, res) => {\n  const posts = await getPosts();\n  res.statusCode = 200;\n  res.setHeader('Content-Type', 'application/json');\n  res.write(JSON.stringify(posts));\n  res.end();\n};\n\nexport default Posts;","map":null,"metadata":{},"sourceType":"module"}
