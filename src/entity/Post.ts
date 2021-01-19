@@ -2,7 +2,7 @@ import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColu
 import { User } from "./User";
 import { Comment } from "./Comment";
 
-@Entity()
+@Entity('posts')
 export class Post {
   @PrimaryGeneratedColumn('increment')
   id: number;
@@ -10,10 +10,10 @@ export class Post {
   title: string;
   @Column('varchar')
   content: string;
-  @CreateDateColumn('time')
+  @CreateDateColumn()
   createdAt: Date;
-  @UpdateDateColumn('time')
-  updateAt: Date;
+  @UpdateDateColumn()
+  updatedAt: Date;
   @ManyToOne(type => User, user => user.posts)
   author: User;
   @OneToMany(type => Comment, comment => comment.post)
