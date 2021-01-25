@@ -2,6 +2,7 @@
 import { GetServerSideProps, NextPage } from 'next'
 import {UAParser} from 'ua-parser-js'
 import { useState, useEffect } from 'react'
+import { createConnection, getConnection} from 'typeorm'
 
 type Props = {
   browser: {
@@ -28,6 +29,8 @@ const index: NextPage<Props> = (props) => {
 export default index
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const connect = await getConnection()
+  console.log('connect', connect)
   const ua = context.req.headers['user-agent']
   const result = new UAParser(ua).getResult()
   return {
@@ -36,3 +39,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   }
 }
+
